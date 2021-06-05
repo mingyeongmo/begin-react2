@@ -1,15 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import './App.css';
+import React, { Component } from 'react';
+import Myname from './Myname';
 
 class App extends Component {
   render() {
-    // 하이
-    return (
-      <div>
-        {/* hihi */}
-        <h1>리액트</h1>
-      </div>
-    )
+    return <Myname name="리액트" />;
   }
 }
 
