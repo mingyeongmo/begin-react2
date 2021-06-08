@@ -8,6 +8,14 @@ export default class PhoneInfo extends Component {
         phone: ''
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if ( this.state !== nextState) {
+            return true;
+        }
+        return this.props.info !== nextProps.info;
+    }
+    
+
     handleRemove = () => {
         const { info, onRemove } = this.props;
         onRemove(info.id);
@@ -49,6 +57,8 @@ export default class PhoneInfo extends Component {
             padding: '8px',
             margin: '8px',
         };
+
+        console.log(name);
 
         return (
             <div style={style}>
