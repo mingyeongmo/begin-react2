@@ -48,6 +48,7 @@ export default class PhoneInfo extends Component {
             [e.target.name]: e.target.value
         })
     }
+    
 
     render() {
         const { name, phone} = this.props.info;

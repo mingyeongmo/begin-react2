@@ -3,7 +3,7 @@ import PhoneInfo from './PhoneInfo';
 
 export default class PhoneInfoList extends Component {
 
-    static defaultProps = {
+    static defaultProps = { // data가 없을때의 초기값.
         data: []
     }
 
@@ -13,17 +13,18 @@ export default class PhoneInfoList extends Component {
         console.log('rendering list');
         
         const list = data.map(
+            // data가 배열인데 data안에 있는 info를 PhoneInfo한테 전달
             info => (
             <PhoneInfo
                 onRemove={onRemove}
                 onUpdate={onUpdate}
                 info={info}
-                key={info.id}
+                key={info.id} // 고유의 값을 넣어줘야...음..
                 />)
         );
         return (
             <div>
-            {list}      
+                {list} {/*렌더링*/}
             </div>
         )
     }

@@ -4,7 +4,7 @@ import PhoneInfoList from './components/PhoneInfoList';
 
 class App extends Component {
   
-  id = 3;
+  id = 3; // id값은 렌더링되는것이 아니라서 state에 넣을 필요가 없다.
 
   state = {
     information: [
@@ -27,18 +27,18 @@ class App extends Component {
     keyword: '',
   }
 
-  handleChange = (e) => {
+  handleChange = (e) => { //이벤트 객체
     this.setState({
       keyword: e.target.value,
     })
   }
   
   handleCreate = (data) => {
-    const { information } = this.state;
+    const { information } = this.state; // 비구조화를 통해 39번째줄 코드를 줄임
     this.setState({
-      information: information.concat({
-        ...data,
-        id: this.id++
+      information: information.concat({ // 기존의 배열에 추가
+        ...data,  // id값 1씩증가
+        id: this.id++ // 현재 id값 넣기
       })
     });
   }
@@ -70,16 +70,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <PhoneForm onCreate={this.handleCreate}/>
+        <PhoneForm onCreate={this.handleCreate}/> {/* PhoneForm에 onCreate값 넣기 */}
         <input
           value={this.state.keyword}
           onChange={this.handleChange}
           placeholder="검색..." 
           />
         <PhoneInfoList
-          data={this.state.information.filter(
+          data={this.state.information.filter( 
             info => info.name.indexOf(this.state.keyword) > -1
-          )}
+          )} 
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
           />
